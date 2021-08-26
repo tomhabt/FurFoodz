@@ -5,7 +5,9 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
+const routes = require('./controllers/');
 require('dotenv').config();
+
 
 
 //Setup app
