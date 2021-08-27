@@ -1,0 +1,23 @@
+{
+  "name": "furfoodz",
+  "version": "1.0.0",
+  "description": "A Group Project in cooperation with the 2021 CU Programming Bootcamp.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackloveday-git/FurFoodz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackloveday-git/FurFoodz/issues"
+  },
+  "homepage": "https://github.com/jackloveday-git/FurFoodz#readme",
+  "dependencies": {
+    "sequelize": "^6.6.5"
+  }
+}
