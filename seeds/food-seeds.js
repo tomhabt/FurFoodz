@@ -63,12 +63,18 @@ const foodData = [
     serving: 50,
     calories: 200
 },
-{   food_name: "Sweet Potato"}
-{   food_name: "Turkey"}
-{   food_name: "Green Beans"}
-
-
-
+{   food_name: "Sweet Potato",
+    serving: 100,
+    calories: 86
+},
+{   food_name: "Turkey Breast",
+    serving: 100,
+    calories: 189
+},
+{   food_name: "Green Beans (boiled/steamed)",
+    serving: 50,
+    calories: 16
+}
 
 
 ]
