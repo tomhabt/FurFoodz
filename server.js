@@ -25,6 +25,10 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
+app.get('/signup', (req, res) => {
+    res.render('signup')
+})
+
 app.get('/homepage', (req, res) => {
     res.render('homepage')
 })
