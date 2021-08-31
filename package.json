@@ -1,7 +1,7 @@
 {
   "name": "furfoodz",
   "version": "1.0.0",
-  "description": "Create and find dog friendly recipes",
+  "description": "A Group Project in cooperation with the 2021 CU Programming Bootcamp.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,14 +13,16 @@
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackloveday-git/FurFoodz/issues"
+  },
+  "homepage": "https://github.com/jackloveday-git/FurFoodz#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "sequelize": "^6.6.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-sessions": "^1.0.6"
-  },
-  "bugs": {
-    "url": "https://github.com/jackloveday-git/FurFoodz/issues"
-  },
-  "homepage": "https://github.com/jackloveday-git/FurFoodz#readme"
+  }
 }
