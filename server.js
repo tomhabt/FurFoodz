@@ -17,17 +17,15 @@ const PORT = process.env.PORT || 3001
 //Use express middleware
 app.use(express.static(path.join(__dirname, '/public')));
 
+//Setup path for html routes
+const htmlRoutes = require('./routes/htmlRoutes/index')
+
+//Set endpoints for html routes
+app.use('/', htmlRoutes);
+
 //Setup Handlebars
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
-
-app.get('/', (req, res) => {
-    res.render('home');
-});
-
-app.get('/homepage', (req, res) => {
-    res.render('homepage')
-})
 
 //Sync sequelize to database
 sequelize.sync({ force: false }).then(() => {
