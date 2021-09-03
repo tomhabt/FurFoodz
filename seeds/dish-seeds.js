@@ -1,6 +1,6 @@
 const { Dish } = require('../models');
 
-const dishData = [
+const DishData = [
  {
     dish_name: 'Dogs Breakfast',
     description: 'Cheesy Scrambled Eggs with Potates Mushed in'

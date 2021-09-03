@@ -1,6 +1,6 @@
 const { Recipe } = require('../models');
 
-const recipeData = [
+const RecipeData = [
  {
     dish_id: 1,
     food_id: 2

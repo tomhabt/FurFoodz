@@ -1,6 +1,6 @@
 const { Food } = require('../models');
 
-const foodData = [
+const FoodData = [
  {
      
    food_name: 'Ground Beef',
