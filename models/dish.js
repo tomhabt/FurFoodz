@@ -3,43 +3,41 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 
-class Food extends Model {}
+class Dish extends Model {}
 
-Food.init(
+Dish.init(
     {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true,
+            autoIncrement: true
           },
-
-          food_name: {
+          dish_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-              len: [1, 40],
+              len: [1, 60],
             },
-
-        serving: {
-            //in grams
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
+          },
+          description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+              len: [1, 260],
+            },
+          },
         
-        calories: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-
-    }
-    {
+     },
+     {
       sequelize,
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'food',
+      modelName: 'dish',
     }
+  
+    
 )
 
-module.exports = food;
+module.exports = dish;
