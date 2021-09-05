@@ -12,6 +12,10 @@ router.get('/dashboard', (req, res) => {
     res.render('dashboard')
 })
 
+router.get('/details', (req, res) => {
+    res.render('details')
+})
+
 router.get('/create', (req, res) => {
     res.render('create')
 })
