@@ -34,7 +34,7 @@ Dish.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'dish',
+      modelName: 'Dish',
     }
   
     
