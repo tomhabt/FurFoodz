@@ -1,10 +1,13 @@
+
 const router = require('express').Router();
 const bodyParser = require('body-parser').json();
-const { Food } = require('../../models');
+const { Food, Recipe } = require('../../models');
 
-// get all users
+// The `/api/dish` endpoint
+
 router.get('/', (req, res) => {
-  Food.findAll()
+  // find all dishes
+  Recipe.findAll()
     .then(dbFood => res.json(dbFood))
     .catch(err => {
       console.log(err);
@@ -13,15 +16,20 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Food.findOne({
+  // find a single dish by its `id`
+  // include its associated food data
+  Recipe.findOne({
     where: {
       id: req.params.id
     },
-    attributes: ['id', 'food_name', 'serving', 'calories']
+    // include: {
+    //   model: FoodInRecipe,
+    //   attributes: ['food_name', 'serving', 'calories']
+    // }
   })
     .then(dbFood => {
       if (!dbFood) {
-        res.status(404).json({ message: 'No Food found with this id' });
+        res.status(404).json({ message: 'No Recipe found with this id' });
         return;
       }
       res.json(dbFood);
@@ -33,48 +41,14 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', bodyParser, (req, res) => {
-  Food.create({
-    food_name: req.body.food_name,
-    serving: req.body.serving,
-    calories: req.body.calories
-  })
-    .then(dbFood => res.json(dbFood))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-router.put('/:id', bodyParser, (req, res) => {
-  Food.update(req.body, {
-    individualHooks: true,
-    where: {
-      id: req.params.id
-    }
+  // create a new tag
+  Recipe.create({
+    recipe_name: req.body.recipe_name,
+    description: req.body.description
   })
     .then(dbFood => {
       if (!dbFood) {
-        res.status(404).json({ message: 'No Food found with this id' });
-        return;
-      }
-
-      res.json({ message: "Updated at given id" });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-router.delete('/:id', (req, res) => {
-  Food.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(dbFood => {
-      if (!dbFood) {
-        res.status(404).json({ message: 'No food found with this id' });
+        res.status(404).json({ message: 'No Recipe found with this id' });
         return;
       }
       res.json(dbFood);
@@ -85,6 +59,47 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.put('/:id', bodyParser, (req, res) => {
+  Recipe.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbFood => {
+      if (!dbFood) {
+        res.status(404).json({ message: 'No Recipe found with this id' });
+        return;
+      }
 
+      res.json({ message: "Updated at given id" });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+
+
+});
+
+router.delete('/:id', (req, res) => {
+  // delete on tag by its `id` value
+  Recipe.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbRecipe => {
+      if (!dbRecipe) {
+        res.status(404).json({ message: 'This Recipe ID was not found' });
+        return;
+      }
+      res.json(dbRecipe);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;

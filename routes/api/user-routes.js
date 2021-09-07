@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { user } = require('../../models');
+const bodyParser = require('body-parser').json();
+const { User } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
-  user.findAll({
+  User.findAll({
     attributes: { exclude: ['password'] }
   })
     .then(dbUserData => res.json(dbUserData))
@@ -14,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  user.findOne({
+  User.findOne({
     attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
@@ -33,11 +34,10 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', bodyParser, (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-  user.create({
-    username: req.body.username,
-    email: req.body.email,
+  User.create({
+    user_name: req.body.user_name,
     password: req.body.password
   })
     .then(dbUserData => res.json(dbUserData))
@@ -47,34 +47,36 @@ router.post('/', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
+router.post('/login', bodyParser, (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
-  user.findOne({
+  User.findOne({
     where: {
-      email: req.body.email
+      user_name: req.body.user_name,
     }
-  }).then(dbUserData => {
-    if (!dbUserData) {
-      res.status(400).json({ message: 'No user with that email address!' });
-      return;
-    }
-
-    const validPassword = dbUserData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect password!' });
-      return;
-    }
-
-    res.json({ user: dbUserData, message: 'You are now logged in!' });
-  });
+  })
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(400).json({ message: 'No user with that name' });
+        return;
+      }
+      if (!req.body.password) {
+        res.status(400).json({ message: 'Must have Password' });
+        return;
+      }
+      if (dbUserData.password == req.body.password) {
+        res.json({ user: dbUserData, message: 'You are now logged in!' });
+      } else {
+        res.status(400).json({ message: 'Password does not match User Password' });
+        return;
+      }
+    });
 });
 
-router.put('/:id', (req, res) => {
+router.put('/login/:id', bodyParser, (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 
   // pass in req.body instead to only update what's passed through
-  user.update(req.body, {
+  User.update(req.body, {
     individualHooks: true,
     where: {
       id: req.params.id
@@ -85,7 +87,7 @@ router.put('/:id', (req, res) => {
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }
-      res.json({user:dbUserData, message:'user deleted'});
+      res.json({ user: dbUserData, message: 'user updated' });
     })
     .catch(err => {
       console.log(err);

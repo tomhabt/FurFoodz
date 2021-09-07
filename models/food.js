@@ -1,45 +1,25 @@
-const { Model, DataTypes } = require('sequelize');
-
-const sequelize = require('../config/connection');
-
-
-class Food extends Model {}
-
-Food.init(
-    {
-        id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement: true,
-          },
-
-          food_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-              len: [1, 40],
-            },
-
-        serving: {
-            //in grams
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        
-        calories: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class Food extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      Food.belongsToMany(models.Recipe, {as: 'RecipesWithFood', through: models.TagRecipeFood, foreignKey: 'id'});
     }
-    {
-      sequelize,
-      timestamps: false,
-      freezeTableName: true,
-      underscored: true,
-      modelName: 'Food',
-    }
-)
-
-module.exports = food;
+  };
+  Food.init({
+    food_name: DataTypes.STRING,
+    serving: DataTypes.INTEGER,
+    calories: DataTypes.INTEGER
+  }, {
+    sequelize,
+    modelName: 'Food',
+  });
+  return Food;
+};
