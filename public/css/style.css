@@ -9,6 +9,15 @@ body {
     background-size: cover;
 }
 
+a:visited {
+    text-decoration: overline;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
 /* ------------------- Login Page ------------------- */
 
 /* - Login Page/Signup Page Header - */

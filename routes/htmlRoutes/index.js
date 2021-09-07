@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Recipe } = require('../../models')
 
 router.get('/', (req, res) => {
     res.render('login');
@@ -9,7 +10,13 @@ router.get('/signup', (req, res) => {
 })
 
 router.get('/dashboard', (req, res) => {
-    res.render('dashboard')
+    Recipe.findAll()
+        .then(recipes => {
+            console.log(recipes)
+            res.render('dashboard', {
+                recipes
+            })
+        })
 })
 
 router.get('/details', (req, res) => {
