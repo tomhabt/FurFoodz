@@ -19,13 +19,19 @@
   "homepage": "https://github.com/jackloveday-git/FurFoodz#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.3",
     "express-sessions": "^1.0.6",
     "handlebars": "^4.7.7",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.0",
+    "nodemon": "^2.0.12",
     "sequelize": "^6.6.5"
   },
-  "keywords": []
+  "keywords": [],
+  "devDependencies": {
+    "sequelize-cli": "^6.2.0"
+  }
 }
