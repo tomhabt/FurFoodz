@@ -13,7 +13,7 @@ module.exports = {
         primaryKey: false,
         refrences: {
           model: 'Recipe',
-          key: 'id'
+          key: 'recipe_id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade',
@@ -24,7 +24,7 @@ module.exports = {
         primaryKey: false,
         refrences: {
           model: 'Food',
-          key: 'id'
+          key: 'food_id'
         },
         onDelete: 'cascade',
         onUpdate: 'cascade',
