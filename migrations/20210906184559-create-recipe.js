@@ -2,7 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('Recipes', {
-      id: {
+      recipe_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -13,6 +13,15 @@ module.exports = {
       },
       description: {
         type: Sequelize.TEXT
+      },
+      food_id: {
+        type: Sequelize.INTEGER,
+        refrences: {
+          model: {
+            tableName: 'FoodInRecipes'
+          },
+          key: 'food_id'
+        }
       },
       createdAt: {
         allowNull: false,

@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   Food.findOne({
     where: {
-      id: req.params.id
+      food_id: req.params.id
     },
-    attributes: ['id', 'food_name', 'serving', 'calories']
+    attributes: ['food_id', 'food_name', 'serving', 'calories']
   })
     .then(dbFood => {
       if (!dbFood) {
@@ -49,7 +49,7 @@ router.put('/:id', bodyParser, (req, res) => {
   Food.update(req.body, {
     individualHooks: true,
     where: {
-      id: req.params.id
+      food_id: req.params.id
     }
   })
     .then(dbFood => {
@@ -69,7 +69,7 @@ router.put('/:id', bodyParser, (req, res) => {
 router.delete('/:id', (req, res) => {
   Food.destroy({
     where: {
-      id: req.params.id
+      food_id: req.params.id
     }
   })
     .then(dbFood => {

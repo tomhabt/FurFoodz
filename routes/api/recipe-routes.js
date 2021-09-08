@@ -20,12 +20,15 @@ router.get('/:id', (req, res) => {
   // include its associated food data
   Recipe.findOne({
     where: {
-      id: req.params.id
+      recipe_id: req.params.id
     },
-    // include: {
-    //   model: FoodInRecipe,
-    //   attributes: ['food_name', 'serving', 'calories']
-    // }
+     include: {
+       model: Food,
+       as: 'RecipesWithFood',
+       through: {
+         attributes: ['food_id']
+       }
+    }
   })
     .then(dbFood => {
       if (!dbFood) {
@@ -63,7 +66,7 @@ router.put('/:id', bodyParser, (req, res) => {
   Recipe.update(req.body, {
     individualHooks: true,
     where: {
-      id: req.params.id
+      recipe_id: req.params.id
     }
   })
     .then(dbFood => {
@@ -86,7 +89,7 @@ router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
   Recipe.destroy({
     where: {
-      id: req.params.id
+      recipe_id: req.params.id
     }
   })
     .then(dbRecipe => {

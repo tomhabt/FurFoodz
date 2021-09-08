@@ -10,12 +10,19 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Recipe.belongsToMany(models.Food, { as: 'FoodInRecipe', through: models.TagRecipeFood, foreignKey: 'id' });
+      Recipe.belongsToMany(models.Food, { as: 'RecipesWithFood', through: models.TagRecipeFood, foreignKey: 'recipe_id' });
     }
   };
   Recipe.init({
+    recipe_id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     recipe_name: DataTypes.STRING,
-    description: DataTypes.TEXT
+    description: DataTypes.TEXT,
+    
   }, {
     sequelize,
     modelName: 'Recipe',
