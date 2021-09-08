@@ -14,15 +14,6 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      food_id: {
-        type: Sequelize.INTEGER,
-        refrences: {
-          model: {
-            tableName: 'FoodInRecipes'
-          },
-          key: 'food_id'
-        }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
