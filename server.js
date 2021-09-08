@@ -9,6 +9,12 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 // const session = require('express-session');
 // const routes = require('./controllers/');
+
+
+//Handle bars pages?
+// const signup = require('./views/signup.handlebars');
+// const btn = signup.getElementById(signUpBtn);
+
 const path = require('path');
 require('dotenv').config();
 
