@@ -36,15 +36,20 @@ a {
 .login {
     text-align: center;
     margin: auto;
+
+    background-color: #f7f7f7;
+    width: 20rem;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .inputDiv {
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: 100px 0 0 0;
     width: 12rem;
     margin: 100px auto auto auto;
+    padding: 40px 0 0 0;
 }
 
 .loginBtnDiv {
@@ -75,12 +80,18 @@ input {
 
 .sendToSignUpDiv p {
     font-size: 20px;
+
+    padding-bottom: 40px;
 }
 
 .signUpAnchor {
     color: blue;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.signUpAnchor:visited {
+    color: blue;
 }
 
 /* ------------------- SignUp Page ------------------- */
@@ -112,6 +123,7 @@ input {
     background-color: white;
     border: 1px solid grey;
     cursor: pointer;
+    margin-bottom: 40px;
 }
 
 /* ------------------- Dashboard ------------------- */
@@ -212,7 +224,7 @@ input {
 .recipeCard:hover,
 .recipeCard:focus {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) var(--hover);
-  transform: translateY(-0.25em);
+    transform: translateY(-0.25em);
 }
 
 .recipeCardWrapper {
@@ -234,6 +246,7 @@ input {
 .recipeCardIl {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
     list-style: none;
     margin: auto;
@@ -281,9 +294,10 @@ input {
 }
 
 .recipeDetailsInstructions {
-    text-align: left;
-    margin: 0 40px 0 40px;
+    text-align: center;
+    margin: 0 40px 0px 40px;
     font-size: 20px;
+    padding-bottom: 75px;
 }
 
 /* ------------------- Create Recipe Page ------------------- */
@@ -291,6 +305,9 @@ input {
 .createRecipeDiv {
     text-align: center;
     margin: auto;
+
+    background-color: #f7f7f7;
+    width: 20rem;
 }
 
 .createBtnDiv {
@@ -318,6 +335,8 @@ input {
     background-color: white;
     border: 1px solid grey;
     cursor: pointer;
+
+    margin-bottom: 40px;
 }
 
 /* ------------------- Footer ------------------- */
@@ -344,4 +363,25 @@ input {
 
 .footer p {
     margin: 10px 30px 0 20px;
+}
+
+/* ------------------- Media Queries ------------------- */
+
+@media only screen and (max-width: 725px) {
+    .footerContact {
+        flex-direction: column; 
+    }
+}
+
+@media only screen and (max-width: 1055px) {
+    .recipeCard {
+        width: 30rem;
+        overflow: hidden;
+    }
+}
+
+@media only screen and (max-width: 1810px) {
+    .detailsContainer {
+        height: 100%;
+    }
 }
