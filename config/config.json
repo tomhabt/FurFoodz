@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "317649",
-    "database": "food_db",
-    "host": "127.0.0.1",
+    "username": "iu36445vb6mighwo",
+    "password": "dyppczz1kf07ncgr",
+    "database": "aoibjru5fo489eki",
+    "host": "qao3ibsa7hhgecbv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
