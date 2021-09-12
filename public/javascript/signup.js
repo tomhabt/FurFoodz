@@ -2,27 +2,28 @@
 async function signupFormHandler(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#username-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    const userName = document.querySelector('#unSignUpInput').value.trim();
+    const password = document.querySelector('#pwSignUpInput').value.trim();
 
-    if (username && email && password) {
+    if (userName && password) {
         const response = await fetch('/api/users', {
             method: 'post',
             body: JSON.stringify({
-                username,
-                email,
-                password
+                "user_name": userName,
+                "password": password
             }),
             headers: { 'Content-Type': 'application/json' }
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard/');
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
     }
 }
 
-document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
+const signUpBtn = document.querySelector('#signUpBtn');
+if (signUpBtn) {
+    document.querySelector('#signUpBtn').addEventListener('click', signupFormHandler);
+}
