@@ -36,11 +36,23 @@ router.get('/:id', (req, res) => {
 
 router.post('/', bodyParser, (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
-  User.create({
-    user_name: req.body.user_name,
-    password: req.body.password
+  User.findOne({
+    where: {
+      user_name: req.body.user_name
+    }
   })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+      if (!dbUserData) {
+        User.create({
+          user_name: req.body.user_name,
+          password: req.body.password
+        });
+        res.json({ message: "User Created."});
+      } else {
+        res.status(400).json({ message: 'User already exists.' });
+        return;
+      }
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -51,7 +63,7 @@ router.post('/login', bodyParser, (req, res) => {
   // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
-      user_name: req.body.user_name,
+      user_name: req.body.user_name
     }
   })
     .then(dbUserData => {
