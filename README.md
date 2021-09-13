@@ -8,20 +8,20 @@ Purpose:
 To allow users to upload, and view, other users recipes they have created and uploaded to our database.
 
 Requirements:
- - [O] Use Node.js and Express.js to create a RESTful API.
- - [O] Use Handlebars.js as the templating engine.
- - [O] Use MySQL and the Sequelize ORM for the database.
- - [O] Have both GET and POST routes for retrieving and adding new data.
- - [O] Be deployed using Heroku (with data).
- - [X] Use at least one new library, package, or technology that we haven’t discussed.
- - [O] Have a polished UI.
- - [O] Be responsive.
- - [O] Be interactive (i.e., accept and respond to user input).
- - [O] Have a folder structure that meets the MVC paradigm.
- - [O] Include authentication (express-session and cookies).
- - [X] Protect API keys and sensitive information with environment variables.
- - [O] Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
- - [O] Have a quality README (with unique name, description, 1technologies used, screenshot, and link to deployed application).
+ - [X] Use Node.js and Express.js to create a RESTful API.
+ - [X] Use Handlebars.js as the templating engine.
+ - [X] Use MySQL and the Sequelize ORM for the database.
+ - [X] Have both GET and POST routes for retrieving and adding new data.
+ - [X] Be deployed using Heroku (with data).
+ - [ ] Use at least one new library, package, or technology that we haven’t discussed.
+ - [X] Have a polished UI.
+ - [X] Be responsive.
+ - [X] Be interactive (i.e., accept and respond to user input).
+ - [X] Have a folder structure that meets the MVC paradigm.
+ - [X] Include authentication (express-session and cookies).
+ - [ ] Protect API keys and sensitive information with environment variables.
+ - [X] Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
+ - [X] Have a quality README (with unique name, description, 1technologies used, screenshot, and link to deployed application).
 
 Technologies:
 None aside from new npm packages.
