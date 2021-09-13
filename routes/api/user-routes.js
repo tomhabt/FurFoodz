@@ -14,6 +14,15 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/logout', (req, res) => {
+  if (req.session.user && req.cookies.user_sid) {
+    res.clearCookie("user_sid");
+    res.redirect("/");
+  } else {
+    res.redirect("/login");
+  }
+});
+
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -47,7 +56,7 @@ router.post('/', bodyParser, (req, res) => {
           user_name: req.body.user_name,
           password: req.body.password
         });
-        res.json({ message: "User Created."});
+        res.json({ message: "User Created." });
       } else {
         res.status(400).json({ message: 'User already exists.' });
         return;
