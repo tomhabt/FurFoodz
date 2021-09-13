@@ -76,6 +76,7 @@ router.post('/login', bodyParser, (req, res) => {
         return;
       }
       if (dbUserData.password == req.body.password) {
+        req.session.user = dbUserData;
         res.json({ user: dbUserData, message: 'You are now logged in!' });
       } else {
         res.status(400).json({ message: 'Password does not match User Password' });
