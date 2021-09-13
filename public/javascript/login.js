@@ -1,4 +1,5 @@
 
+//let logged = false;
 
 async function loginFormHandler(event) {
   event.preventDefault();
@@ -17,6 +18,9 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
+      // logged = true;
+      // userSession(logged);
+      //req.session.user = userName;
       document.location.replace('/dashboard/');
     } else {
       alert(response.statusText);
