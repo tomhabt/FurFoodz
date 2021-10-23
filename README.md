@@ -35,3 +35,6 @@ App Screenshot:
 
 Deployed Link:
 https://furfoodz.herokuapp.com/dashboard/
+
+Original Git repo : 
+https://github.com/jackloveday-git/FurFoodz.git
